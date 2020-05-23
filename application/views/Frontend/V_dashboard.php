@@ -21,7 +21,8 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800" rel="stylesheet">
     
 	<!-- BASE CSS -->
-	<link href="<?php echo base_url()?>assets/frontend/css/bootstrap.min.css" rel="stylesheet">
+<!--	<link href="--><?php //echo base_url()?><!--assets/frontend/css/bootstrap.min.css" rel="stylesheet">-->
+	<link href="<?php echo base_url('assets/frontend/css/bootstrap.min.css'); ?>" rel="stylesheet">
 	<link href="<?php echo base_url()?>assets/frontend/css/style.css" rel="stylesheet">
 	<link href="<?php echo base_url()?>assets/frontend/css/menu.css" rel="stylesheet">
 	<link href="<?php echo base_url()?>assets/frontend/css/vendors.css" rel="stylesheet">
