@@ -23,8 +23,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$serverIPAddress = isset($_SERVER['SERVER_ADDR'])?$_SERVER['SERVER_ADDR']:gethostbyname(gethostname());
-$config['base_url'] = 'http://'.$serverIPAddress.'/heavlypedia';
+//$serverIPAddress = isset($_SERVER['SERVER_ADDR'])?$_SERVER['SERVER_ADDR']:gethostbyname(gethostname());
+//$config['base_url'] = 'http://'.$serverIPAddress.'/heavlypedia/';
+$config['base_url'] = '';
 
 /*
 |--------------------------------------------------------------------------
