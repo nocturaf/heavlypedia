@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Mar 20, 2020 at 01:54 PM
--- Server version: 10.1.36-MariaDB
--- PHP Version: 7.2.11
+-- Host: localhost
+-- Generation Time: May 31, 2020 at 09:21 AM
+-- Server version: 10.4.8-MariaDB
+-- PHP Version: 7.1.32
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -67,20 +67,23 @@ CREATE TABLE `akun_pasien` (
   `alamat` text NOT NULL,
   `no_telp` varchar(50) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `gambar` varchar(50) NOT NULL DEFAULT 'default.png'
+  `gambar` varchar(50) NOT NULL DEFAULT 'default.png',
+  `otp` int(5) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `akun_pasien`
 --
 
-INSERT INTO `akun_pasien` (`id_pasien`, `username`, `password`, `nama_pasien`, `tgl_lahir`, `jenis_kelamin`, `alamat`, `no_telp`, `email`, `gambar`) VALUES
-(1, 'aaa', 'ed02457b5c41d964dbd2f2a609d63fe1bb7528dbe55e1abf5b52c249cd735797', 'Fikri Sabriansyah', 'Thursday 16 January 2020', 'Laki-laki', 'Tes alamat', '081123456789', 'briansabriansyah@gmail.com', 'default.png'),
-(2, 'bbb', 'bbbbbb', 'bbb', '2010-10-28', 'Perempuan', 'bbb', '111', 'bbb@gmail.com', 'default.png'),
-(3, 'ccc', 'cccccc', 'ccc', '2020-02-05', 'Perempuan', 'ccc', '000', 'ccc@gmail.com', 'default.png'),
-(4, 'ddd', 'dddddd', 'ddd', '14/03/1996', 'Laki-laki', 'ddd', '0123', 'ddd@gmail.com', 'default.png'),
-(5, 'eee', 'eeeeee', 'eee', 'Thursday 02 January 1977', 'Laki-laki', 'eee', '012', 'eee@gmail.com', 'default.png'),
-(6, 'testes1', '65ab74e238af04a5d2ed2f0197cc30237b87d2e2cf973224ffd93865df39cbe1', 'testes', 'Thursday 05 January 2020', 'Laki-laki', 'testes', '122', 'testes1@gmail.com', 'foto_pasien_id_6.jpg');
+INSERT INTO `akun_pasien` (`id_pasien`, `username`, `password`, `nama_pasien`, `tgl_lahir`, `jenis_kelamin`, `alamat`, `no_telp`, `email`, `gambar`, `otp`) VALUES
+(1, 'aaa', 'ed02457b5c41d964dbd2f2a609d63fe1bb7528dbe55e1abf5b52c249cd735797', 'Fikri Sabriansyah', 'Thursday 16 January 2020', 'Laki-laki', 'Tes alamat', '081123456789', 'briansabriansyah@gmail.com', 'default.png', NULL),
+(2, 'bbb', 'bbbbbb', 'bbb', '2010-10-28', 'Perempuan', 'bbb', '111', 'bbb@gmail.com', 'default.png', NULL),
+(3, 'ccc', 'cccccc', 'ccc', '2020-02-05', 'Perempuan', 'ccc', '000', 'ccc@gmail.com', 'default.png', NULL),
+(4, 'ddd', 'dddddd', 'ddd', '14/03/1996', 'Laki-laki', 'ddd', '0123', 'ddd@gmail.com', 'default.png', NULL),
+(5, 'eee', 'eeeeee', 'eee', 'Thursday 02 January 1977', 'Laki-laki', 'eee', '012', 'eee@gmail.com', 'default.png', NULL),
+(6, 'testes1', '65ab74e238af04a5d2ed2f0197cc30237b87d2e2cf973224ffd93865df39cbe1', 'testes', 'Thursday 05 January 2020', 'Laki-laki', 'testes', '122', 'testes1@gmail.com', 'foto_pasien_id_6.jpg', NULL),
+(30, 'nocturaf', '', 'Rafli Syam', '', '', '', '085156166752', 'nocturaf@gmail.com', '', 6452),
+(31, 'isnanar', '0d25ffc72c115b6497a4e0e873bb01d6b737ca6e626a034aefd82bb9e6fd6dbf', 'Isnan', 'Thursday 31 January 2020', 'Laki-laki', 'BTN Aura', '081223816007', 'isnan@gmail.com', 'default.png', 0);
 
 -- --------------------------------------------------------
 
@@ -271,7 +274,7 @@ ALTER TABLE `akun_admin`
 -- AUTO_INCREMENT for table `akun_pasien`
 --
 ALTER TABLE `akun_pasien`
-  MODIFY `id_pasien` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_pasien` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `akun_superadmin`
