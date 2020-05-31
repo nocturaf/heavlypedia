@@ -27,7 +27,7 @@ class Register extends REST_Controller {
         if($saveData) {
 
             // send sms otp code
-            $this->smsGateway->sendOTP($userData['no_telp'], $userData['otp']);
+            //$this->smsGateway->sendOTP($userData['no_telp'], $userData['otp']);
 
             $response = $this->responseBuilder->build(REST_Controller::HTTP_OK, true, "Akun berhasil dibuat");
             $this->response($response);
