@@ -52,7 +52,6 @@
 				<h3>Heavlypedia</h3>
 				<p>
 					Aplikasi booking rumah sakit atau klinik terintegrasi
-                    <?php echo FCPATH; ?>
 				</p>
 			</div>
 		</div>

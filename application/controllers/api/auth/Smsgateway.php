@@ -1,6 +1,6 @@
 <?php
 
-require ('./smsgateway/autoload.php');
+require (FCPATH.'smsgateway/autoload.php';);
 
 use SMSGatewayMe\Client\ApiClient;
 use SMSGatewayMe\Client\ApiException;
