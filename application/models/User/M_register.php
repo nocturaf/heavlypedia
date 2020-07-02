@@ -27,15 +27,16 @@
 			return $this->db->insert("akun_pasien", $data);
 		}
 
-		function validate_user_otp($phoneNumber, $otpFromUser) {
+		function validate_user_otp($phoneNumber) {
 		    $this->db->where('no_telp', $phoneNumber);
 		    $query = $this->db->get('akun_pasien');
-		    $data = $query->result_array();
-		    if($data[0]['otp'] == $otpFromUser) {
-		        return true;
-            } else {
-		        return false;
-            }
+            return $query->result_array();
+        }
+
+        function getUserByPhoneNumber($phoneNumber) {
+		    $this->db->where('no_telp', $phoneNumber);
+		    $query = $this->db->get('akun_pasien');
+		    return $query->result();
         }
 
         function update_user_otp($phoneNumber, $newOtp) {

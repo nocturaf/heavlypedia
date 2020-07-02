@@ -19,9 +19,9 @@ class Verification extends REST_Controller {
 
     function index_post() {
         $userData = $this->post();
-        $checkOtp = $this->registerModel->validate_user_otp($userData['no_telp'], $userData['otp']);
-        if($checkOtp) {
-            $response = $this->responseBuilder->build(REST_Controller::HTTP_OK, true, "Verifikasi OTP Berhasil");
+        $selectedUserData = $this->registerModel->validate_user_otp($userData['no_telp']);
+        if($selectedUserData[0]['otp'] == $userData['otp']) {
+            $response = $this->responseBuilder->buildWithData(REST_Controller::HTTP_OK, true, $selectedUserData);
         } else {
             $response = $this->responseBuilder->build(REST_Controller::HTTP_OK, false, "Verifikasi OTP Gagal");
         }

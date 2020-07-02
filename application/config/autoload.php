@@ -132,4 +132,4 @@ $autoload['language'] = array();
 |
 |	$autoload['model'] = array('first_model' => 'first');
 */
-$autoload['model'] = array('User/M_register','User/M_login','User/M_setting', 'User/M_booking', 'User/M_list_booking','Admin/M_admin_login','Admin/M_admin_setting','Admin/M_admin_dokter','Admin/M_admin_list_booking', 'Superadmin/M_superadmin_login', 'Superadmin/M_superadmin_home', 'Superadmin/M_superadmin_poli', 'api/Hospital_model');
+$autoload['model'] = array('User/M_register','User/M_login','User/M_setting', 'User/M_booking', 'User/M_list_booking','Admin/M_admin_login','Admin/M_admin_setting','Admin/M_admin_dokter','Admin/M_admin_list_booking', 'Superadmin/M_superadmin_login', 'Superadmin/M_superadmin_home', 'Superadmin/M_superadmin_poli', 'api/Hospital_model', 'api/Booking_model');

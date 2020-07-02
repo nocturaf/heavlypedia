@@ -1,4 +1,5 @@
 <?php
+	define("FCM_API_KEY", getenv("FCM_API_KEY"));
 	class List_booking extends CI_Controller
 	{
 		function __contruct(){
@@ -34,6 +35,29 @@
 			$akun = $this->session->userdata('account');
 			$id_admin = $akun['id_admin'];
 
+			$id_booking = $this->input->post('id_booking');
+
+			$nama_rs = "";
+			$this->db->where('id_admin', $id_admin);
+			$rs = $this->db->get('akun_admin')->result();
+			foreach ($rs as $row) {
+				$nama_rs = $row->nama_admin;
+			}
+
+			$id_pasien = "";
+			$this->db->where('id_booking', $id_booking);
+			$pasien = $this->db->get('booking')->result();
+			foreach ($pasien as $row) {
+				$id_pasien = $row->id_pasien;
+			}
+
+			$gcmRegId = "";
+			$this->db->where('id_pasien', $id_pasien);
+			$pasienData = $this->db->get('akun_pasien', $id_pasien)->result();
+			foreach ($pasienData as $pas) {
+				$gcmRegId = $pas->gcm_reg_id;
+			}
+
 			$data['jum_pasien'] = $this->M_admin_login->get_data_jum_pasien($id_admin);
 			$data['jum_dokter'] = $this->M_admin_login->get_data_jum_dokter($id_admin);
 			$data['jum_booking'] = $this->M_admin_login->get_data_jum_booking($id_admin);
@@ -42,10 +66,37 @@
 			$status = "Dikonfirmasi";
 			$data = array(
                 "status" => $status
-            ); 
+            );
 
             $this->M_admin_list_booking->konfirmasi_booking($data,$id_booking);
+			$this->send_notif_confirm($gcmRegId, array(
+				'title' => 'Status reservasi : '.$status,
+				'body' => $nama_rs.' telah mengkonfirmasi reservasi kamu'
+			));
             redirect('Admin/List_booking');
+		}
+
+		function send_notif_confirm($to, $data)
+		{
+			$fields = array(
+				'to' => $to,
+				'notification' => $data
+			);
+			$headers = array(
+				'Authorization: key='.FCM_API_KEY, 'Content-Type: application/json'
+			);
+			$url = 'https://fcm.googleapis.com/fcm/send';
+
+			$ch = curl_init();
+			curl_setopt($ch, CURLOPT_URL, $url);
+			curl_setopt($ch, CURLOPT_POST, true);
+			curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+			curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($fields));
+			$result = curl_exec($ch);
+			return $result;
 		}
 
 		function Refresh()

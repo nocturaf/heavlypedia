@@ -31,7 +31,7 @@
 		}
 
 		function book_now($data){
-			$this->db->insert("booking", $data);
+			return $this->db->insert("booking", $data);
 		}
 
 		function cek_kuota_dokter($id_admin,$id_dokter) {

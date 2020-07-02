@@ -27,9 +27,12 @@ class Login extends REST_Controller {
 
             $userData['otp'] = $this->emailGateway->generateRandomNumber();
             $updateOtp = $this->userModel->update_user_otp($userData['no_telp'], $userData['otp']);
+            $selectedUser["selected_user"] = $this->userModel->getUserByPhoneNumber($userData['no_telp']);
 
             if($updateOtp) {
-                $this->emailGateway->sendEmailOtp($userData['email'], $userData['otp']);
+                foreach ($selectedUser["selected_user"] as $user) {
+                    $this->emailGateway->sendEmailOtp($user->email, $userData['otp']);
+                }
                 $response = $this->responseBuilder->build(REST_Controller::HTTP_OK, true, "Nomor ponsel ditemukan");
             }
 
