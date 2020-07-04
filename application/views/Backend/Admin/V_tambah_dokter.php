@@ -90,7 +90,7 @@
                                 <div class="form-group" id="alamat_div">
                                     <div class="form-line">
                                         <label style="color: black;"><strong>Alamat</strong></label><br>
-                                            <textarea rows="7" cols="80" name="alamat" placeholder="Masukan Alamat"></textarea>
+                                            <textarea style="border: none;" rows="7" cols="80" name="alamat" placeholder="Masukan Alamat"></textarea>
                                         <span id="alamat_error"></span>
                                     </div>
                                 </div>
