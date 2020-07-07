@@ -62,7 +62,7 @@ class Booking extends REST_Controller {
     function findNearestDateFromToday($listOfBookingSchedule, $userCurrentDateTime) {
         // compare date time
         foreach($listOfBookingSchedule as $booking) {
-            $interval[] = abs(strtotime("2020-07-05 02:00:00") - strtotime($booking));
+            $interval[] = abs(strtotime($userCurrentDateTime) - strtotime($booking));
         }
         asort($interval);
         $closest = key($interval);
