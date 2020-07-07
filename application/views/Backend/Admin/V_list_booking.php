@@ -112,13 +112,13 @@
                                             $hari = 'Sabtu';
                                         }
 
-                                        $tgl_booking = $hari." ".$tanggal." ".$bulan." ".$tahun;
+//                                        $tgl_booking = $hari." ".$tanggal." ".$bulan." ".$tahun;
                                 ?>
                                 <tr>
                                     <td style="text-align: center; padding-top: 2em;"><?php echo $no; ?></td>
                                     <td style="text-align: center; padding-top: 2em;"><?php echo $nama_pasien; ?></td>
                                     <td style="text-align: center; padding-top: 2em;"><?php echo $nama_dokter; ?></td>
-                                    <td style="text-align: center; padding-top: 2em;"><?php echo $tgl_booking; ?></td>
+                                    <td style="text-align: center; padding-top: 2em;"><?php echo date('Y-m-d', strtotime("20 Juli 2020")); ?></td>
                                     <td style="text-align: center; padding-top: 2em;"><?php echo $jam_booking; ?></td>
                                     <td style="text-align: center; padding-top: 2em;"><?php echo $poli; ?></td>
                                     <td style="text-align: center; padding-top: 2em;"><?php echo $id_booking; ?></td>

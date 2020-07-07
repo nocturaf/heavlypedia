@@ -34,6 +34,17 @@
 			return $this->db->insert("booking", $data);
 		}
 
+		function book_now_distinct($data) {
+            $this->db->where('tgl_booking', $data['tgl_booking']);
+            $this->db->where('jam_booking', $data['jam_booking']);
+            $checkDuplicate = $this->db->get('booking')->num_rows();
+            if($checkDuplicate > 0) {
+                return null;
+            } else {
+                return $this->db->insert('booking', $data);
+            }
+        }
+
 		function cek_kuota_dokter($id_admin,$id_dokter) {
 			$data = $this->db->query("SELECT kuota FROM jadwal_dokter WHERE id_admin = '$id_admin' AND id_dokter = '$id_dokter'");
     		return $data->result_array()[0];
