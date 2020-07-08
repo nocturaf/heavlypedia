@@ -31,4 +31,12 @@ class Hospital_model extends CI_Model {
         return $this->db->get('jadwal_dokter')->result_array();
     }
 
+    function getPoli()
+    {
+        $query = $this->db->get('poli');
+        if($query) {
+            return $query->result_array();
+        }
+    }
+
 }

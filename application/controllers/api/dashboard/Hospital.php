@@ -47,5 +47,12 @@ class Hospital extends REST_Controller {
         );
     }
 
+    function poli_get()
+    {
+        $poliList = $this->hospital->getPoli();
+        $response = $this->responseBuilder->buildWithData(REST_Controller::HTTP_OK, true, $poliList);
+        $this->response($response);
+    }
+
 
 }
