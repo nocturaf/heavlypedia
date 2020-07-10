@@ -158,8 +158,7 @@
 			$my_email = getenv('EMAIL_USER');
 			$my_password = getenv('EMAIL_PASS');
 			$my_name = 'Heavlypedia Customer Service';
-			$my_message = 'Hai pelanggan terhormat, untuk reset password akun silahkan klik link berikut <br>
-			http://localhost/heavlypedia/Register/Reset_password/'.$password;
+			$my_message = 'Hai pelanggan terhormat, untuk reset password akun silahkan klik link berikut <br>'.base_url().'/Register/Reset_password/'.$password;
 
 			$config = Array(
 				'protocol' => 'smtp',
