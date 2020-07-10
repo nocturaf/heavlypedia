@@ -107,8 +107,6 @@
             }
         })
 
-        console.log('tes');
-
       // validate username
 
         var letters = /^[a-zA-Z-,]+(\s{0,1}[a-zA-Z-, ])*$/;

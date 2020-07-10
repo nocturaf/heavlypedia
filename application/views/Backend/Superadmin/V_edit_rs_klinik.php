@@ -9,7 +9,7 @@
 <meta name="description" content="<?php echo $description ?>"> 
 <meta name="keywords" content="<?php echo $keywords ?>">
 
-<link rel="icon" href="favicon.ico" type="image/x-icon">
+<link rel="icon" href="<?php echo base_url()?>assets/backend/images/favicon.ico" type="image/x-icon">
 <link href="<?php echo base_url()?>assets/backend/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
 <!-- Dropzone Css -->
@@ -128,7 +128,7 @@
                                 <div class="form-group" id="alamat_div">
                                     <div class="form-line">
                                         <label style="color: black;"><strong>Alamat</strong></label><br>
-                                        <textarea rows="7" cols="80" name="alamat" placeholder="Masukan Alamat"><?php echo $alamat;?></textarea>
+                                        <textarea name="alamat" placeholder="Masukan Alamat" style="width: 100%; min-height: 150px;"><?php echo $alamat;?></textarea>
                                         <span id="alamat_error"></span>
                                     </div>
                                 </div>

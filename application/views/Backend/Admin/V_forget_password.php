@@ -11,7 +11,7 @@
 
 <link href="<?php echo base_url()?>assets/backend/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
-<link rel="icon" href="favicon.ico" type="image/x-icon">
+<link rel="icon" href="<?php echo base_url()?>assets/backend/images/favicon.ico" type="image/x-icon">
 <!-- Custom Css -->
 <link href="<?php echo base_url()?>assets/backend/css/main.css" rel="stylesheet">
 <link href="<?php echo base_url()?>assets/backend/css/login.css" rel="stylesheet">
@@ -26,7 +26,7 @@
     <div class="card">
         <h1 class="title"><span>Heavlypedia</span>Forgot Password <div class="msg"></div></h1>
         <div class="col-md-12">
-            <form id="sign_in" method="POST" action="<?php echo site_url('Admin/Login/Confirm_forget_password')?>">
+            <form method="POST" action="<?php echo site_url('Admin/Login/Confirm_forget_password')?>" onsubmit="return Validate()" id="addForm">
                 <div class="input-group" id="username_div"> <span class="input-group-addon"> <i class="zmdi zmdi-account"></i> </span>
                     <div class="form-line">
                         <input type="text" class="form-control" name="username" placeholder="Masukan Username">
@@ -76,6 +76,7 @@
                 status_username = true;
             }
         })
+
 
       // validate username
 

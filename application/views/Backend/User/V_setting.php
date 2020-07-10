@@ -127,7 +127,7 @@
                                 <div class="form-group" id="alamat_div">
                                     <div class="form-line">
                                         <label style="color: black;"><strong>Alamat</strong></label><br>
-                                        <textarea style="border: 0;" rows="7" cols="80" name="alamat" placeholder="Masukan Alamat"><?php echo $alamat;?></textarea>
+                                        <textarea name="alamat" placeholder="Masukan Alamat" style="width: 100%; min-height: 150px;"><?php echo $alamat;?></textarea>
                                         <span id="alamat_error"></span>
                                     </div>
                                 </div>

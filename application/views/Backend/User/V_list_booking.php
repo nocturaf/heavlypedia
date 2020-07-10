@@ -149,11 +149,16 @@
                                     <td style="text-align: center; padding-top: 2em;"><?php echo $jam_booking; ?></td>
                                     <td style="text-align: center; padding-top: 2em;"><?php echo $poli; ?></td>
                                     <?php  
-                                        if($status == 'Dikonfirmasi'){
+                                        if($status == 'Dikonfirmasi')
+                                        {
                                     ?>
-                                        <td style="text-align: center; padding-top: 2em; color: green"><b><?php echo $status; ?></b></td>
+                                            <td style="text-align: center; padding-top: 2em; color: green"><b><?php echo $status; ?></b></td>
                                     <?php  
-                                        }
+                                        } else if ($status == 'Menunggu Konfirmasi'){
+                                    ?>
+                                            <td style="text-align: center; padding-top: 2em; color: orange;"><b><?php echo $status; ?></b></td>
+                                    <?php 
+                                        } 
                                         else{
                                     ?>
                                         <td style="text-align: center; padding-top: 2em; color: red"><b><?php echo $status; ?></b></td>

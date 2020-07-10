@@ -9,7 +9,7 @@
 <meta name="description" content="<?php echo $description ?>"> 
 <meta name="keywords" content="<?php echo $keywords ?>">
 
-<link rel="icon" href="favicon.ico" type="image/x-icon">
+<link rel="icon" href="<?php echo base_url()?>assets/backend/images/favicon.ico" type="image/x-icon">
 <link href="<?php echo base_url()?>assets/backend/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
 <!-- Dropzone Css -->

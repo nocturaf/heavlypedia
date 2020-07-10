@@ -11,7 +11,7 @@
 
 <link href="<?php echo base_url()?>assets/backend/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
-<link rel="icon" href="favicon.ico" type="image/x-icon">
+<link rel="icon" href="<?php echo base_url()?>assets/backend/images/favicon.ico" type="image/x-icon">
 <!-- Custom Css -->
 <link href="<?php echo base_url()?>assets/backend/css/main.css" rel="stylesheet">
 <link href="<?php echo base_url()?>assets/backend/css/login.css" rel="stylesheet">

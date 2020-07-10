@@ -163,7 +163,7 @@
 <script src="<?php echo base_url()?>assets/backend/bundles/mainscripts.bundle.js"></script><!-- Custom Js -->
 <script src="<?php echo base_url()?>assets/backend/bundles/morphingscripts.bundle.js"></script><!-- morphing search page js --> 
 <script src="<?php echo base_url()?>assets/backend/js/pages/forms/basic-form-elements.js"></script>
-<script type="text/javascript" src='http://maps.google.com/maps/api/js?key=<?php echo getenv('MAPS_API_KEY'); ?>&libraries=places'></script>
+<script type="text/javascript" src='http://maps.google.com/maps/api/js?key=AIzaSyB_0855rY7OFe_Osi4fIQfBfD45JX_EBnQ&libraries=places'></script>
 <script src="<?php echo base_url()?>assets/backend/js/locationpicker.jquery.min.js"></script>
 
 <script type="text/javascript">
