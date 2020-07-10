@@ -110,29 +110,30 @@
 			$data_email = $this->M_register->get_email($username);
 			$email = $data_email[0]['email'];
 
-			$my_email = 'heavlypedia@gmail.com';
-			$my_password = 'heavlypedia123';
+			$my_email = getenv('EMAIL_USER');
+			$my_password = getenv('EMAIL_PASS');
 			$my_name = 'Heavlypedia Customer Service';
 			$my_message = 'Hai pelanggan terhormat, password akun anda telah kami ubah dengan password baru anda. Terima kasih atas menggunakan aplikasi Heavlypedia. <br><br>'. $my_name;
 
 			$config = Array(
-	                'protocol' => 'smtp',
-	                'smtp_host' => 'ssl://smtp.googlemail.com',
-	                'smtp_port' => 465,
-	                'smtp_user' => $my_email,
-	                'smtp_pass' => $my_password,
-	                'mailtype'  => 'html', 
-	                'charset'   => 'iso-8859-1',
-	                'wordwrap'  => TRUE
+				'protocol' => 'smtp',
+				'smtp_host' => 'ssl://smtp.googlemail.com',
+				'smtp_port' => '465',
+				'smtp_timeout' => '7',
+				'smtp_user' => $my_email,
+				'smtp_pass' => $my_password,
+				'mailtype'  => 'html',
+				'newline'  => "\r\n",
+				'charset'   => 'utf-8'
 	        );
 
-            $this->load->library('email', $config);
-            $this->email->from($my_email, $my_name); 
-            $this->email->to($email);
-            $this->email->subject('Reset Password Successful');
-            $this->email->message($my_message); 
-            $this->email->set_newline("\r\n");    
-            $this->email->send();      
+			$this->load->library('email');
+			$this->email->initialize($config);
+			$this->email->from($my_email, $my_name);
+			$this->email->to($email);
+			$this->email->subject('Reset Password');
+			$this->email->message($my_message);
+			$this->email->send();
 
 	        redirect('Register/Reset_password_sukses');
 			
