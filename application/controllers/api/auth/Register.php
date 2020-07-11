@@ -24,19 +24,24 @@ class Register extends REST_Controller {
         $userData = $this->post();
         $userData['otp'] = $this->emailGateway->generateRandomNumber();
         $saveData = $this->registerModel->add_account($userData);
-        if($saveData) {
-            // send email otp code
-            $email = $this->emailGateway->sendEmailOtp($userData['email'], $userData['otp']);
-
-            if($email) {
-                $response = $this->responseBuilder->build(REST_Controller::HTTP_OK, true, "Akun Berhasil Dibuat");
-                $this->response($response);
+        if($saveData < 2) {
+            if($saveData) {
+                // send email otp code
+                $email = $this->emailGateway->sendEmailOtp($userData['email'], $userData['otp']);
+                if($email) {
+                    $response = $this->responseBuilder->build(REST_Controller::HTTP_OK, true, "Akun Berhasil Dibuat");
+                } else {
+                    $response = $this->responseBuilder->build(REST_Controller::HTTP_OK, true, $email);
+                }
             } else {
-                $response = $this->responseBuilder->build(REST_Controller::HTTP_OK, true, $email);
-                $this->response($response);
+                $response = $this->responseBuilder->build(REST_Controller::HTTP_OK, true, "Gagal registrasi");
             }
         } else {
-            $response = $saveData;
+            if($saveData == 3) {
+                $response = $this->responseBuilder->build(REST_Controller::HTTP_OK, true, "Nomor telepon sudah terdaftar");
+            } else {
+                $response = $this->responseBuilder->build(REST_Controller::HTTP_OK, true, "Email sudah terdaftar");
+            }
         }
         $this->response($response);
     }

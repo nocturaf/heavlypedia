@@ -24,7 +24,27 @@
         }
 
 		function add_account($data){
-			return $this->db->insert("akun_pasien", $data);
+		    $userPhoneNumber = $data['no_telp'];
+		    $userEmail = $data['email'];
+
+		    $this->db->where('no_telp', $userPhoneNumber);
+		    $checkPhoneNumber = $this->db->get('akun_pasien')->num_rows();
+		    if($checkPhoneNumber > 0) {
+		        // duplicate phone number
+		        return 3;
+            } else {
+                $this->db->where('email', $userEmail);
+                $checkEmail = $this->db->get('akun_pasien')->num_rows();
+                if($checkEmail > 0) {
+                    // duplicate email
+                    return 4;
+                } else {
+                    // everything goes well, user is registered
+                    if($this->db->insert("akun_pasien", $data)) {
+                        return true;
+                    }
+                }
+            }
 		}
 
 		function validate_user_otp($phoneNumber) {
