@@ -31,16 +31,16 @@ class Register extends REST_Controller {
                 if($email) {
                     $response = $this->responseBuilder->build(REST_Controller::HTTP_OK, true, "Akun Berhasil Dibuat");
                 } else {
-                    $response = $this->responseBuilder->build(REST_Controller::HTTP_OK, true, $email);
+                    $response = $this->responseBuilder->build(REST_Controller::HTTP_OK, false, $email);
                 }
             } else {
-                $response = $this->responseBuilder->build(REST_Controller::HTTP_OK, true, "Gagal registrasi");
+                $response = $this->responseBuilder->build(REST_Controller::HTTP_OK, false, "Gagal registrasi");
             }
         } else {
             if($saveData == 3) {
-                $response = $this->responseBuilder->build(REST_Controller::HTTP_OK, true, "Nomor telepon sudah terdaftar");
+                $response = $this->responseBuilder->build(REST_Controller::HTTP_OK, false, "Nomor telepon sudah terdaftar");
             } else {
-                $response = $this->responseBuilder->build(REST_Controller::HTTP_OK, true, "Email sudah terdaftar");
+                $response = $this->responseBuilder->build(REST_Controller::HTTP_OK, false, "Email sudah terdaftar");
             }
         }
         $this->response($response);
