@@ -26,15 +26,22 @@
         function validate_user_duplication($data) {
 		    $userPhoneNumber = $data['no_telp'];
 		    $userEmail = $data['email'];
+		    $username = $data['username'];
+
 		    $this->db->where('no_telp', $userPhoneNumber);
 		    $checkPhoneNumber = $this->db->get('akun_pasien')->num_rows();
             $this->db->where('email', $userEmail);
             $checkEmail = $this->db->get('akun_pasien')->num_rows();
+            $this->db->where('username', $username);
+            $checkUsername = $this->db->get('akun_pasien')->num_rows();
             if($checkPhoneNumber > 0) {
                 return "phone";
             }
             if($checkEmail > 0) {
                 return "email";
+            }
+            if($checkUsername > 0) {
+                return "username";
             }
             return "ok";
         }

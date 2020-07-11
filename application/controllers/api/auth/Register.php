@@ -33,6 +33,10 @@ class Register extends REST_Controller {
             $response = $this->responseBuilder->build(REST_Controller::HTTP_OK, false, "Email sudah terdaftar");
             $this->response($response);
         }
+        if($validateDuplication == "username") {
+            $response = $this->responseBuilder->build(REST_Controller::HTTP_OK, false, "Username sudah terdaftar");
+            $this->response($response);
+        }
         if($validateDuplication == "ok") {
             $saveData = $this->registerModel->add_account($userData);
             if($saveData) {
