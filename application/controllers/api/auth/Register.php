@@ -23,8 +23,18 @@ class Register extends REST_Controller {
     function index_post() {
         $userData = $this->post();
         $userData['otp'] = $this->emailGateway->generateRandomNumber();
-        $saveData = $this->registerModel->add_account($userData);
-        if($saveData < 2) {
+
+        $validateDuplication = $this->registerModel->validate_user_duplication($userData);
+        if($validateDuplication == "phone") {
+            $response = $this->responseBuilder->build(REST_Controller::HTTP_OK, false, "Nomor telepon sudah terdaftar");
+            $this->response($response);
+        }
+        if($validateDuplication == "email") {
+            $response = $this->responseBuilder->build(REST_Controller::HTTP_OK, false, "Email sudah terdaftar");
+            $this->response($response);
+        }
+        if($validateDuplication == "ok") {
+            $saveData = $this->registerModel->add_account($userData);
             if($saveData) {
                 // send email otp code
                 $email = $this->emailGateway->sendEmailOtp($userData['email'], $userData['otp']);
@@ -36,14 +46,8 @@ class Register extends REST_Controller {
             } else {
                 $response = $this->responseBuilder->build(REST_Controller::HTTP_OK, false, "Gagal registrasi");
             }
-        } else {
-            if($saveData == 3) {
-                $response = $this->responseBuilder->build(REST_Controller::HTTP_OK, false, "Nomor telepon sudah terdaftar");
-            } else {
-                $response = $this->responseBuilder->build(REST_Controller::HTTP_OK, false, "Email sudah terdaftar");
-            }
+            $this->response($response);
         }
-        $this->response($response);
     }
 
 
